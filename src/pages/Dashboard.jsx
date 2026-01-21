@@ -1,5 +1,6 @@
 import Table from "../components/Table";
 import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";
 
 const Dashboard = () => {
   return (
