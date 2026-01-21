@@ -1,3 +1,31 @@
 {
-  "ingredients": []
+  "ingredients": [
+    {
+      "id": 1,
+      "name": "Arabica Beans",
+      "price": 15,
+      "description": "High-quality Arabica beans",
+      "strength": "Medium",
+      "flavor": "Fruity"
+    },
+    {
+      "id": 2,
+      "name": "Robusta Beans",
+      "price": 12,
+      "description": "Strong Robusta beans",
+      "strength": "High",
+      "flavor": "Earthy"
+    }
+  ],
+  "coffees": [
+    {
+      "id": 1,
+      "title": "Ethiopian Yirgacheffe",
+      "ingredients": [1, 2],
+      "description": "Light roast with floral notes",
+      "image": "",
+      "country": "Ethiopia",
+      "caffeine": 120
+    }
+  ]
 }
