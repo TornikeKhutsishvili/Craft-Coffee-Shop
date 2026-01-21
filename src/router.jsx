@@ -1,5 +1,11 @@
+// Layout
 import MainLayout from "./layouts/MainLayout";
+// Pages
 import Dashboard from "./pages/Dashboard";
+import AddCoffee from "./pages/AddCoffee";
+import AddIngredients from "./pages/AddIngredients";
+// Error Page
+import ErrorPage from "./pages/ErrorPage";
 
 const router = [
   // Nested Router
@@ -13,6 +19,10 @@ const router = [
       {
         element: <AddCoffee />,
         path: "/add-coffee",
+      },
+      {
+        element: <AddIngredients />,
+        path: "/add-ingredients",
       },
     ],
   },
