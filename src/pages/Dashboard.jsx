@@ -1,15 +1,15 @@
-import Table from "../components/Table";
+import DashboardTable from "../components/DashboardTable";
 import Sidebar from "../components/Sidebar";
-import Header from "../components/Header";
+import DashboardHeader from "../components/DashboardHeader";
 
 const Dashboard = () => {
   return (
     <>
       <Sidebar />
       <div className="main-content">
-        <Header />
+        <DashboardHeader />
         <div className="table-container">
-          <Table />
+          <DashboardTable />
         </div>
         <div>
           <h2>Coffee Cards</h2>

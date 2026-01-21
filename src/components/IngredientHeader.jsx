@@ -5,11 +5,8 @@ const IngredientHeader = () => {
     <>
       <header className="header">
         <h1>Manage Ingredients</h1>
-        <button
-          className="btn btn-secondary"
-          onClick={() => Navigate("/add-coffee")}
-        >
-          Add New Coffee
+        <button className="btn btn-secondary" onClick={() => Navigate("/")}>
+          Back to Dashboard
         </button>
       </header>
     </>

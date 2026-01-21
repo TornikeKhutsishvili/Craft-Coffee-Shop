@@ -1,16 +1,16 @@
 import Sidebar from "../components/Sidebar";
-import Header from "../components/Header";
-import Form from "../components/Form";
+import CoffeeHeader from "../components/CoffeeHeader";
+import CoffeeForm from "../components/CoffeeForm";
 
 const AddCoffee = () => {
   return (
     <>
       <Sidebar />
       <div className="main-content">
-        <Header />
+        <CoffeeHeader />
       </div>
       <div className="form-container">
-        <Form />
+        <CoffeeForm />
       </div>
     </>
   );
