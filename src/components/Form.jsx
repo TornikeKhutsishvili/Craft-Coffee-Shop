@@ -1,12 +1,14 @@
 const Form = () => {
+  const submitCoffeeForm = () => {};
+
   return (
     <>
       <form
         id="coffee-form"
-        onsubmit="
-              submitCoffeeForm();
-              return false;
-            "
+        onSubmit={(e) => {
+          e.preventDefault();
+          submitCoffeeForm();
+        }}
       >
         <div class="form-row">
           <div class="form-col">
