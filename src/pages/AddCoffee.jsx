@@ -6,10 +6,10 @@ const AddCoffee = () => {
   return (
     <>
       <Sidebar />
-      <div class="main-content">
+      <div className="main-content">
         <Header />
       </div>
-      <div class="form-container">
+      <div className="form-container">
         <Form />
       </div>
     </>

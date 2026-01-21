@@ -7,13 +7,13 @@ const AddIngredients = () => {
   return (
     <>
       <Sidebar />
-      <div class="main-content">
+      <div className="main-content">
         <IngredientHeader />
       </div>
       <div className="table-container">
         <IngredientTable />
       </div>
-      <div class="form-container" id="ingredient-form">
+      <div className="form-container" id="ingredient-form">
         <h2 id="form-title">Add New Ingredient</h2>
         <IngredientForm />
       </div>

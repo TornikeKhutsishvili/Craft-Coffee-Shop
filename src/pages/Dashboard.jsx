@@ -13,7 +13,7 @@ const Dashboard = () => {
         </div>
         <div>
           <h2>Coffee Cards</h2>
-          <div class="coffee-cards" id="coffee-cards"></div>
+          <div className="coffee-cards" id="coffee-cards"></div>
         </div>
       </div>
     </>

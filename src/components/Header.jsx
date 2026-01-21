@@ -7,7 +7,10 @@ const Header = () => {
     <>
       <header className="header">
         <h1>Coffee Dashboard</h1>
-        <button class="btn btn-primary" onClick={() => navigate("/add-coffee")}>
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/add-coffee")}
+        >
           Add New Coffee
         </button>
       </header>

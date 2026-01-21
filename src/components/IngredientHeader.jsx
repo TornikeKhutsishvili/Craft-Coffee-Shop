@@ -6,7 +6,7 @@ const IngredientHeader = () => {
       <header className="header">
         <h1>Manage Ingredients</h1>
         <button
-          class="btn btn-secondary"
+          className="btn btn-secondary"
           onClick={() => Navigate("/add-coffee")}
         >
           Add New Coffee

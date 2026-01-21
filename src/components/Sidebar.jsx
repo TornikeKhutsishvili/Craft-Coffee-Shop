@@ -4,18 +4,18 @@ const Sidebar = () => {
   return (
     <>
       <div className="sidebar">
-        <div class="sidebar-header">
+        <div className="sidebar-header">
           <h2>Coffee Admin</h2>
           <p>Management Panel</p>
         </div>
-        <ul class="nav-menu">
-          <li class="nav-item">
+        <ul className="nav-menu">
+          <li className="nav-item">
             <Link to="/">Dashboard</Link>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
             <Link to="/add-coffee">Add Coffee</Link>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
             <Link to="/add-ingredient">Manage Ingredients</Link>
           </li>
         </ul>
