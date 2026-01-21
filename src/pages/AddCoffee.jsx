@@ -1,15 +1,16 @@
 import Sidebar from "../components/Sidebar";
 import CoffeeHeader from "../components/CoffeeHeader";
 import CoffeeForm from "../components/CoffeeForm";
+import styles from "../styles/addCoffee.module.css";
 
 const AddCoffee = () => {
   return (
     <>
       <Sidebar />
-      <div className="main-content">
+      <div className={styles.mainContent}>
         <CoffeeHeader />
       </div>
-      <div className="form-container">
+      <div className={styles.formContainer}>
         <CoffeeForm />
       </div>
     </>

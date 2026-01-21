@@ -1,3 +1,6 @@
+import styles from "../styles/form.module.css";
+import button from "../styles/button.module.css";
+
 const Form = () => {
   const submitCoffeeForm = () => {};
 
@@ -10,54 +13,59 @@ const Form = () => {
           submitCoffeeForm();
         }}
       >
-        <div className="form-row">
-          <div className="form-col">
-            <div className="form-group">
-              <label for="title">Coffee Name</label>
-              <input type="text" id="title" className="form-control" required />
+        <div className={styles.formRow}>
+          <div className={styles.formCol}>
+            <div className={styles.formGroup}>
+              <label htmlFor="title">Coffee Name</label>
+              <input
+                type="text"
+                id="title"
+                className={styles.formControl}
+                required
+              />
             </div>
           </div>
-          <div className="form-col">
-            <div className="form-group">
-              <label for="country">Country of Origin</label>
+          <div className={styles.formCol}>
+            <div className={styles.formGroup}>
+              <label htmlFor="country">Country of Origin</label>
               <input
                 type="text"
                 id="country"
-                className="form-control"
+                className={styles.formControl}
                 required
               />
             </div>
           </div>
         </div>
 
-        <div className="form-group">
-          <label for="description">Description</label>
+        <div className={styles.formGroup}>
+          <label htmlFor="description">Description</label>
           <textarea
             id="description"
-            className="form-control"
+            className={styles.formControl}
             required
           ></textarea>
         </div>
 
-        <div className="form-row">
-          <div className="form-col">
-            <div className="form-group">
-              <label for="image">Image URL</label>
+        <div className={styles.formRow}>
+          <div className={styles.formCol}>
+            <div className={styles.formGroup}>
+              <label htmlFor="image">Image URL</label>
               <input
                 type="text"
                 id="image"
-                className="form-control"
+                className={styles.formControl}
                 placeholder="https://example.com/image.jpg"
               />
             </div>
           </div>
-          <div className="form-col">
-            <div className="form-group">
-              <label for="price">Price ($)</label>
+          <div className={styles.formCol}>
+            <div className={styles.formGroup}>
+              <label htmlFor="price">Price ($)</label>
               <input
                 type="number"
                 id="price"
-                className="form-control"
+                className={styles.formControl}
                 step="0.01"
                 required
                 min="0"
@@ -66,25 +74,32 @@ const Form = () => {
           </div>
         </div>
 
-        <div className="form-group">
-          <label for="caffeine">Caffeine (mg)</label>
+        <div className={styles.formGroup}>
+          <label htmlFor="caffeine">Caffeine (mg)</label>
           <input
             type="number"
             id="caffeine"
-            className="form-control"
+            className={styles.formControl}
             required
             min="0"
           />
         </div>
 
-        <div className="form-group">
-          <label for="ingredients">Ingredients</label>
-          <select id="ingredients" className="form-control" multiple></select>
+        <div className={styles.formGroup}>
+          <label htmlFor="ingredients">Ingredients</label>
+          <select
+            id="ingredients"
+            className={styles.formControl}
+            multiple
+          ></select>
           <small>Hold Ctrl (or Cmd) to select multiple ingredients</small>
         </div>
 
-        <div className="form-group">
-          <button type="submit" className="btn btn-primary">
+        <div className={styles.formGroup}>
+          <button
+            type="submit"
+            className={`${button.btn} ${button.btnPrimary}`}
+          >
             Add Coffee
           </button>
         </div>

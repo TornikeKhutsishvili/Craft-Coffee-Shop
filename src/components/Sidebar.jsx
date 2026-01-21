@@ -1,21 +1,22 @@
 import { Link } from "react-router-dom";
+import styles from "../styles/sidebar.module.css";
 
 const Sidebar = () => {
   return (
     <>
-      <div className="sidebar">
-        <div className="sidebar-header">
+      <div className={styles.sidebar}>
+        <div className={styles.sidebarHeader}>
           <h2>Coffee Admin</h2>
           <p>Management Panel</p>
         </div>
-        <ul className="nav-menu">
-          <li className="nav-item">
+        <ul className={styles.navMenu}>
+          <li className={styles.navItem}>
             <Link to="/">Dashboard</Link>
           </li>
-          <li className="nav-item">
+          <li className={styles.navItem}>
             <Link to="/add-coffee">Add Coffee</Link>
           </li>
-          <li className="nav-item">
+          <li className={styles.navItem}>
             <Link to="/add-ingredients">Manage Ingredients</Link>
           </li>
         </ul>

@@ -1,19 +1,20 @@
 import DashboardTable from "../components/DashboardTable";
 import Sidebar from "../components/Sidebar";
 import DashboardHeader from "../components/DashboardHeader";
+import styles from "../styles/dashboard.module.css";
 
 const Dashboard = () => {
   return (
     <>
       <Sidebar />
-      <div className="main-content">
+      <div className={styles.mainContent}>
         <DashboardHeader />
-        <div className="table-container">
+        <div className={styles.tableContainer}>
           <DashboardTable />
         </div>
         <div>
           <h2>Coffee Cards</h2>
-          <div className="coffee-cards" id="coffee-cards"></div>
+          <div className={styles.coffeeCards} id="coffee-cards"></div>
         </div>
       </div>
     </>
