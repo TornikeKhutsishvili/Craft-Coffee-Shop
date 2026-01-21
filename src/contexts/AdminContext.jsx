@@ -1,104 +1,127 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useMemo } from "react";
+import useFetch from "../hooks/useFetch";
+import useRequest from "../hooks/useRequest";
 
 const AdminContext = createContext(null);
-const API = "http://localhost:3001";
+const API_URL = "http://localhost:3001";
 
 const AdminProvider = ({ children }) => {
-  const [ingredients, setIngredients] = useState([]);
-  const [coffees, setCoffees] = useState([]);
+  const {
+    response: ingredients,
+    loading: ingredientsLoading,
+    error: ingredientsError,
+    refetch: refetchIngredients,
+  } = useFetch({ url: `${API_URL}/ingredients` });
 
-  const fetchAll = async () => {
-    const [ingredResult, cofResult] = await Promise.all([
-      fetch(`${API}/ingredients`),
-      fetch(`${API}/coffees`),
-    ]);
+  const {
+    response: coffees,
+    loading: coffeesLoading,
+    error: coffeesError,
+    refetch: refetchCoffees,
+  } = useFetch({ url: `${API_URL}/coffees` });
 
-    setIngredients(await ingredResult.json());
-    setCoffees(await cofResult.json());
-  };
+  const { sendRequest, loading: mutationLoading } = useRequest({});
 
-  // Ingredient
-  const getIngredient = async (id) => {
-    const res = await fetch(`${API}/ingredients/${id}`);
-    if (!res.ok) throw new Error("Failed to fetch ingredient");
-    return await res.json();
-  };
+  const getIngredient = useCallback(
+    (id) => sendRequest(null, `${API_URL}/ingredients/${id}`),
+    [sendRequest],
+  );
 
-  const addIngredient = async (data) => {
-    await fetch(`${API}/ingredients`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    fetchAll();
-  };
+  const addIngredient = useCallback(
+    async (data) => {
+      await sendRequest(data, `${API_URL}/ingredients`, "POST");
+      refetchIngredients();
+    },
+    [sendRequest, refetchIngredients],
+  );
 
-  const editIngredient = async (id, data) => {
-    await fetch(`${API}/ingredients/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    fetchAll();
-  };
+  const editIngredient = useCallback(
+    async (id, data) => {
+      await sendRequest(data, `${API_URL}/ingredients/${id}`, "PUT");
+      refetchIngredients();
+    },
+    [sendRequest, refetchIngredients],
+  );
 
-  const deleteIngredient = async (id) => {
-    await fetch(`${API}/ingredients/${id}`, { method: "DELETE" });
-    fetchAll();
-  };
+  const deleteIngredient = useCallback(
+    async (id) => {
+      await sendRequest(null, `${API_URL}/ingredients/${id}`, "DELETE");
+      refetchIngredients();
+    },
+    [sendRequest, refetchIngredients],
+  );
 
-  // Coffee
-  const getCoffee = async (id) => {
-    const res = await fetch(`${API}/coffees/${id}`);
-    if (!res.ok) throw new Error("Failed to fetch coffee");
-    return await res.json();
-  };
+  const getCoffee = useCallback(
+    (id) => sendRequest(null, `${API_URL}/coffees/${id}`),
+    [sendRequest],
+  );
 
-  const addCoffee = async (data) => {
-    await fetch(`${API}/coffees`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    fetchAll();
-  };
+  const addCoffee = useCallback(
+    async (data) => {
+      await sendRequest(data, `${API_URL}/coffees`, "POST");
+      refetchCoffees();
+    },
+    [sendRequest, refetchCoffees],
+  );
 
-  const editCoffee = async (id, data) => {
-    await fetch(`${API}/coffees/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    fetchAll();
-  };
+  const editCoffee = useCallback(
+    async (id, data) => {
+      await sendRequest(data, `${API_URL}/coffees/${id}`, "PUT");
+      refetchCoffees();
+    },
+    [sendRequest, refetchCoffees],
+  );
 
-  const deleteCoffee = async (id) => {
-    await fetch(`${API}/coffees/${id}`, {
-      method: "DELETE",
-    });
-  };
+  const deleteCoffee = useCallback(
+    async (id) => {
+      await sendRequest(null, `${API_URL}/coffees/${id}`, "DELETE");
+      refetchCoffees();
+    },
+    [sendRequest, refetchCoffees],
+  );
 
-  useEffect(() => {
-    (async () => {
-      await fetchAll();
-    })();
-  }, []);
+  const contextValue = useMemo(
+    () => ({
+      ingredients: ingredients || [],
+      coffees: coffees || [],
+
+      ingredientsLoading,
+      coffeesLoading,
+      ingredientsError,
+      coffeesError,
+      mutationLoading,
+
+      getIngredient,
+      addIngredient,
+      editIngredient,
+      deleteIngredient,
+
+      getCoffee,
+      addCoffee,
+      editCoffee,
+      deleteCoffee,
+    }),
+    [
+      ingredients,
+      coffees,
+      ingredientsLoading,
+      coffeesLoading,
+      ingredientsError,
+      coffeesError,
+      mutationLoading,
+      getIngredient,
+      addIngredient,
+      editIngredient,
+      deleteIngredient,
+      getCoffee,
+      addCoffee,
+      editCoffee,
+      deleteCoffee,
+    ],
+  );
 
   return (
-    <AdminContext.Provider
-      value={{
-        ingredients,
-        coffees,
-        getIngredient,
-        addIngredient,
-        editIngredient,
-        deleteIngredient,
-        getCoffee,
-        addCoffee,
-        editCoffee,
-        deleteCoffee,
-      }}
-    >
+    <AdminContext.Provider value={contextValue}>
       {children}
     </AdminContext.Provider>
   );
