@@ -3,7 +3,7 @@ import useFetch from "../hooks/useFetch";
 import useRequest from "../hooks/useRequest";
 
 const AdminContext = createContext(null);
-const API_URL = "http://localhost:3001";
+const API_URL = "http://localhost:3004";
 
 const AdminProvider = ({ children }) => {
   const {

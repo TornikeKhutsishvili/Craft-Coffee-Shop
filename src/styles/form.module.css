@@ -1,0 +1,46 @@
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--dark-color);
+}
+
+.formControl {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.formControl:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+textarea.formControl {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.formCow {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.formCol {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .formRow {
+    flex-direction: column;
+    gap: 0;
+  }
+}

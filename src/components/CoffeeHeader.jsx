@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import button from "../styles/button.module.css";
 
 const CoffeeHeader = () => {
   const navigate = useNavigate();
@@ -7,7 +8,10 @@ const CoffeeHeader = () => {
     <>
       <header className="header">
         <h1>Add New Coffee</h1>
-        <button className="btn btn-primary" onClick={() => navigate("/")}>
+        <button
+          className={`${button.btn} ${button.btnPrimary}`}
+          onClick={() => navigate("/")}
+        >
           Back to Dashboard
         </button>
       </header>

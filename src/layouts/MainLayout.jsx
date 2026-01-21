@@ -4,11 +4,11 @@ const MainLayout = () => {
   return (
     <>
       <div className="main-layout-wrapper">
-        <div className="container">
-          <main>
+        <main>
+          <div className="container">
             <Outlet />
-          </main>
-        </div>
+          </div>
+        </main>
       </div>
     </>
   );

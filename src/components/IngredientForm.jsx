@@ -1,3 +1,6 @@
+import styles from "../styles/form.module.css";
+import button from "../styles/button.module.css";
+
 const IngredientForm = () => {
   const submitIngredientForm = () => {};
 
@@ -11,20 +14,25 @@ const IngredientForm = () => {
       >
         <input type="hidden" id="ingredient-id" />
 
-        <div className="form-row">
-          <div className="form-col">
-            <div className="form-group">
-              <label for="name">Ingredient Name</label>
-              <input type="text" id="name" className="form-control" required />
+        <div className={styles.formRow}>
+          <div className={styles.formCol}>
+            <div className={styles.formGroup}>
+              <label htmlFor="name">Ingredient Name</label>
+              <input
+                type="text"
+                id="name"
+                className={styles.formControl}
+                required
+              />
             </div>
           </div>
-          <div className="form-col">
-            <div className="form-group">
-              <label for="price">Price ($)</label>
+          <div className={styles.formCol}>
+            <div className={styles.formGroup}>
+              <label htmlFor="price">Price ($)</label>
               <input
                 type="number"
                 id="price"
-                className="form-control"
+                className={styles.formControl}
                 step="0.01"
                 min="0"
                 required
@@ -33,44 +41,44 @@ const IngredientForm = () => {
           </div>
         </div>
 
-        <div className="form-group">
-          <label for="description">Description</label>
+        <div className={styles.formGroup}>
+          <label htmlFor="description">Description</label>
           <textarea
             id="description"
-            className="form-control"
+            className={styles.formControl}
             required
           ></textarea>
         </div>
 
-        <div className="form-row">
-          <div className="form-col">
-            <div className="form-group">
-              <label for="strength">Strength</label>
-              <select id="strength" className="form-control" required>
+        <div className={styles.formRow}>
+          <div className={styles.formCol}>
+            <div className={styles.formGroup}>
+              <label htmlFor="strength">Strength</label>
+              <select id="strength" className={styles.formControl} required>
                 <option value="Low">Low</option>
                 <option value="Medium">Medium</option>
                 <option value="High">High</option>
               </select>
             </div>
           </div>
-          <div className="form-col">
-            <div className="form-group">
-              <label for="flavor">Flavor Profile</label>
+          <div className={styles.formCol}>
+            <div className={styles.formGroup}>
+              <label htmlFor="flavor">Flavor Profile</label>
               <input
                 type="text"
                 id="flavor"
-                className="form-control"
+                className={styles.formControl}
                 required
               />
             </div>
           </div>
         </div>
 
-        <div className="form-group">
+        <div className={styles.formGroup}>
           <button
             type="submit"
             id="submit-ingredient"
-            className="btn btn-primary"
+            className={`${button.btn} ${button.btnPrimary}`}
           >
             Add Ingredient
           </button>
