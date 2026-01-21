@@ -1,8 +1,10 @@
 import Table from "../components/Table";
+import Sidebar from "../components/Sidebar";
 
 const Dashboard = () => {
   return (
     <>
+      <Sidebar />
       <div className="main-content">
         <Header />
         <div className="table-container">
