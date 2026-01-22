@@ -3,7 +3,7 @@ import useFetch from "../hooks/useFetch";
 import useRequest from "../hooks/useRequest";
 
 const AdminContext = createContext(null);
-const API_URL = "http://localhost:3004";
+const API_URL = "http://localhost:3003";
 
 const AdminProvider = ({ children }) => {
   const {
@@ -20,24 +20,11 @@ const AdminProvider = ({ children }) => {
     refetch: refetchCoffees,
   } = useFetch({ url: `${API_URL}/coffees` });
 
-  const { sendRequest, loading: mutationLoading } = useRequest({});
-
-  const getIngredient = useCallback(
-    (id) => sendRequest(null, `${API_URL}/ingredients/${id}`),
-    [sendRequest],
-  );
+  const { sendRequest, loading: mutationLoading } = useRequest();
 
   const addIngredient = useCallback(
     async (data) => {
       await sendRequest(data, `${API_URL}/ingredients`, "POST");
-      refetchIngredients();
-    },
-    [sendRequest, refetchIngredients],
-  );
-
-  const editIngredient = useCallback(
-    async (id, data) => {
-      await sendRequest(data, `${API_URL}/ingredients/${id}`, "PUT");
       refetchIngredients();
     },
     [sendRequest, refetchIngredients],
@@ -51,35 +38,6 @@ const AdminProvider = ({ children }) => {
     [sendRequest, refetchIngredients],
   );
 
-  const getCoffee = useCallback(
-    (id) => sendRequest(null, `${API_URL}/coffees/${id}`),
-    [sendRequest],
-  );
-
-  const addCoffee = useCallback(
-    async (data) => {
-      await sendRequest(data, `${API_URL}/coffees`, "POST");
-      refetchCoffees();
-    },
-    [sendRequest, refetchCoffees],
-  );
-
-  const editCoffee = useCallback(
-    async (id, data) => {
-      await sendRequest(data, `${API_URL}/coffees/${id}`, "PUT");
-      refetchCoffees();
-    },
-    [sendRequest, refetchCoffees],
-  );
-
-  const deleteCoffee = useCallback(
-    async (id) => {
-      await sendRequest(null, `${API_URL}/coffees/${id}`, "DELETE");
-      refetchCoffees();
-    },
-    [sendRequest, refetchCoffees],
-  );
-
   const contextValue = useMemo(
     () => ({
       ingredients: ingredients || [],
@@ -89,17 +47,11 @@ const AdminProvider = ({ children }) => {
       coffeesLoading,
       ingredientsError,
       coffeesError,
+      refetchCoffees,
       mutationLoading,
 
-      getIngredient,
       addIngredient,
-      editIngredient,
       deleteIngredient,
-
-      getCoffee,
-      addCoffee,
-      editCoffee,
-      deleteCoffee,
     }),
     [
       ingredients,
@@ -108,15 +60,10 @@ const AdminProvider = ({ children }) => {
       coffeesLoading,
       ingredientsError,
       coffeesError,
+      refetchCoffees,
       mutationLoading,
-      getIngredient,
       addIngredient,
-      editIngredient,
       deleteIngredient,
-      getCoffee,
-      addCoffee,
-      editCoffee,
-      deleteCoffee,
     ],
   );
 
@@ -128,11 +75,9 @@ const AdminProvider = ({ children }) => {
 };
 
 export const useAdminContext = () => {
-  const contextValue = useContext(AdminContext);
-  if (!contextValue)
-    throw new Error("Your component in not inside AdminProvider");
-
-  return contextValue;
+  const AdminContextValue = useContext(AdminContext);
+  if (!AdminContextValue) throw new Error("Component not inside AdminProvider");
+  return AdminContextValue;
 };
 
 export default AdminProvider;

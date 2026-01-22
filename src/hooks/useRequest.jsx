@@ -2,31 +2,35 @@ import { useState } from "react";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 
-const useRequest = ({ url, method }) => {
+const useRequest = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const sendRequest = async (body, custom) => {
-    setLoading(true);
-    const res = await fetch(url || custom, {
-      method,
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${API_KEY}`,
-      },
-      body: !!body && method !== "GET" ? JSON.stringify(body) : undefined,
-    });
+  const sendRequest = async (body, url, method = "GET") => {
+    try {
+      setLoading(true);
+      setError(null);
 
-    const data = await res.json();
-    setLoading(false);
+      const res = await fetch(url, {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${API_KEY}`,
+        },
+        body: body && method !== "GET" ? JSON.stringify(body) : undefined,
+      });
 
-    if (!res.ok) {
-      const error = new Error("Network response was not ok");
-      setError(error);
-      throw error;
+      if (!res.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      return await res.json();
+    } catch (err) {
+      setError(err);
+      throw err;
+    } finally {
+      setLoading(false);
     }
-
-    return data;
   };
 
   return { sendRequest, loading, error };
