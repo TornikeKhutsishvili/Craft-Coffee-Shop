@@ -21,7 +21,7 @@ const useFetch = ({ url, method = "GET" }) => {
       });
 
       if (!res.ok) {
-        throw new Error(`Request failed with status ${res.status}`);
+        throw new Error(`Request failed with status`);
       }
 
       const data = await res.json();
