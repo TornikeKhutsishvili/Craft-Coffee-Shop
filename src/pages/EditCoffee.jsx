@@ -6,7 +6,6 @@ import styles from "../styles/addCoffee.module.css";
 const EditCoffee = () => {
   return (
     <>
-      <Sidebar />
       <div className={styles.mainContent}>
         <EditCoffeeHeader />
       </div>
