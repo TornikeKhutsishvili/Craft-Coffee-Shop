@@ -8,7 +8,7 @@ const CoffeeDetail = () => {
       <div className={styles.mainContent}>
         <CoffeeDetailHeader />
       </div>
-      <div class={styles.coffeeDetail}>
+      <div className={styles.coffeeDetail}>
         <CoffeeDetailInfo />
       </div>
     </>
