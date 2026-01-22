@@ -1,12 +1,10 @@
 import DashboardTable from "../components/DashboardTable";
-import Sidebar from "../components/Sidebar";
 import DashboardHeader from "../components/DashboardHeader";
 import styles from "../styles/dashboard.module.css";
 
 const Dashboard = () => {
   return (
     <>
-      <Sidebar />
       <div className={styles.mainContent}>
         <DashboardHeader />
         <div className={styles.tableContainer}>

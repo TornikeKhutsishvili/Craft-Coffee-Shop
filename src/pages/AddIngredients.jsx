@@ -1,4 +1,3 @@
-import Sidebar from "../components/Sidebar";
 import IngredientHeader from "../components/IngredientHeader";
 import IngredientTable from "../components/IngredientTable";
 import IngredientForm from "../components/IngredientForm";
@@ -7,7 +6,6 @@ import styles from "../styles/addIngredients.module.css";
 const AddIngredients = () => {
   return (
     <>
-      <Sidebar />
       <div className={styles.mainContent}>
         <IngredientHeader />
       </div>
