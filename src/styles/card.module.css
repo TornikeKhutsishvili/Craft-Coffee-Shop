@@ -18,7 +18,8 @@
 }
 
 .cardImg {
-  height: 200px;
+  height: 380px;
+  max-height: 400px;
   overflow: hidden;
 }
 

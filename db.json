@@ -1,31 +1,50 @@
 {
   "ingredients": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Arabica Beans",
-      "price": 15,
+      "price": 15.99,
       "description": "High-quality Arabica beans",
       "strength": "Medium",
       "flavor": "Fruity"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Robusta Beans",
-      "price": 12,
+      "price": 12.99,
       "description": "Strong Robusta beans",
       "strength": "High",
       "flavor": "Earthy"
+    },
+    {
+      "id": "3",
+      "name": "Vanilla Syrup",
+      "price": 8.99,
+      "description": "Low Vanilla Syrup",
+      "strength": "Low",
+      "flavor": "Sweet"
     }
   ],
   "coffees": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Ethiopian Yirgacheffe",
-      "ingredients": [1, 2],
-      "description": "Light roast with floral notes",
-      "image": "",
+      "ingredients": ["1", "2"],
+      "description": "A light roasted coffee with bright acidity, and complex fruit and floral notes....",
+      "image": "/images/coffee/EthiopianYirgacheffe.webp",
       "country": "Ethiopia",
+      "price": 4.99,
       "caffeine": 120
+    },
+    {
+      "id": "2",
+      "title": "Colombian Supremo",
+      "ingredients": ["1", "3"],
+      "description": "Medium roast with a sweet and rich caramel flavor, balanced acidity and a clean finish....",
+      "image": "/images/coffee/ColombianSupremo.jpg",
+      "country": "Colombia",
+      "price": 5.49,
+      "caffeine": 140
     }
   ]
 }

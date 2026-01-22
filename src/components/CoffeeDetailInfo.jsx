@@ -9,10 +9,7 @@ const CoffeeDetailInfo = ({ coffee, onEdit, onDelete }) => {
   return (
     <>
       <div className={styles.coffeeImage}>
-        <img
-          src={coffee.image || "images/default-coffee.jpg"}
-          alt={coffee.title}
-        />
+        <img src={coffee.image} alt={coffee.title} />
       </div>
 
       <div className={styles.coffeeInfo}>
@@ -39,14 +36,18 @@ const CoffeeDetailInfo = ({ coffee, onEdit, onDelete }) => {
 
           <div>
             {coffee.ingredients?.length > 0 ? (
-              coffee.ingredients.map((ing) => (
-                <div key={ing.id} className={styles.ingredientItem}>
-                  <span className={styles.ingredientName}>{ing.name}</span>
-                  <span className={styles.ingredientDetails}>
-                    Strength: {ing.strength} | Flavor: {ing.flavor}
-                  </span>
-                </div>
-              ))
+              coffee.ingredients.map((ingred) =>
+                ingred ? (
+                  <div key={ingred.id} className={styles.ingredientItem}>
+                    <span className={styles.ingredientName}>
+                      {ingred.title}
+                    </span>
+                    <span className={styles.ingredientDetails}>
+                      Strength: {ingred.strength} | Flavor: {ingred.flavor}
+                    </span>
+                  </div>
+                ) : null,
+              )
             ) : (
               <p>No ingredients found</p>
             )}

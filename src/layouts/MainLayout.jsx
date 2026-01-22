@@ -1,14 +1,13 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
+// import layout from "../styles/MainLayout.module.css";
 
 const MainLayout = () => {
   return (
     <>
-      <div className="main-layout-wrapper">
-        <Sidebar />
-        <div className="container">
-          <Outlet />
-        </div>
+      <Sidebar />
+      <div className="container">
+        <Outlet />
       </div>
     </>
   );

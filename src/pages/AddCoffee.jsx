@@ -7,9 +7,9 @@ const AddCoffee = () => {
     <>
       <div className={styles.mainContent}>
         <CoffeeHeader />
-      </div>
-      <div className={styles.formContainer}>
-        <CoffeeForm />
+        <div className={styles.formContainer}>
+          <CoffeeForm />
+        </div>
       </div>
     </>
   );

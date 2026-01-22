@@ -20,9 +20,7 @@ const useRequest = () => {
         body: body && method !== "GET" ? JSON.stringify(body) : undefined,
       });
 
-      if (!res.ok) {
-        throw new Error("Network response was not ok");
-      }
+      if (!res.ok) throw new Error("Request failed");
 
       return await res.json();
     } catch (err) {

@@ -1,8 +1,44 @@
 import styles from "../styles/form.module.css";
 import button from "../styles/button.module.css";
+import { useAdminContext } from "../contexts/AdminContext";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const CoffeeForm = () => {
-  const submitCoffeeForm = () => {};
+  const { ingredients, addCoffee } = useAdminContext();
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    title: "",
+    ingredients: [],
+    description: "",
+    image: "",
+    country: "",
+    price: "",
+    caffeine: "",
+  });
+
+  const onChange = (e) => {
+    const { id, value, selectedOptions } = e.target;
+
+    if (id === "ingredients") {
+      const values = Array.from(selectedOptions).map((o) => Number(o.value));
+      setForm((prev) => ({ ...prev, ingredients: values }));
+      return;
+    }
+
+    setForm((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const submitCoffeeForm = async () => {
+    await addCoffee({
+      ...form,
+      price: Number(form.price),
+      caffeine: Number(form.caffeine),
+    });
+
+    navigate("/");
+  };
 
   return (
     <>
@@ -20,6 +56,8 @@ const CoffeeForm = () => {
               <input
                 type="text"
                 id="title"
+                value={form.title}
+                onChange={onChange}
                 className={styles.formControl}
                 required
               />
@@ -31,6 +69,8 @@ const CoffeeForm = () => {
               <input
                 type="text"
                 id="country"
+                value={form.country}
+                onChange={onChange}
                 className={styles.formControl}
                 required
               />
@@ -43,6 +83,8 @@ const CoffeeForm = () => {
           <textarea
             id="description"
             className={styles.formControl}
+            value={form.description}
+            onChange={onChange}
             required
           ></textarea>
         </div>
@@ -54,6 +96,8 @@ const CoffeeForm = () => {
               <input
                 type="text"
                 id="image"
+                value={form.image}
+                onChange={onChange}
                 className={styles.formControl}
                 placeholder="https://example.com/image.jpg"
               />
@@ -65,6 +109,8 @@ const CoffeeForm = () => {
               <input
                 type="number"
                 id="price"
+                value={form.price}
+                onChange={onChange}
                 className={styles.formControl}
                 step="0.01"
                 required
@@ -79,6 +125,8 @@ const CoffeeForm = () => {
           <input
             type="number"
             id="caffeine"
+            value={form.caffeine}
+            onChange={onChange}
             className={styles.formControl}
             required
             min="0"
@@ -89,9 +137,17 @@ const CoffeeForm = () => {
           <label htmlFor="ingredients">Ingredients</label>
           <select
             id="ingredients"
+            value={form.ingredients}
+            onChange={onChange}
             className={styles.formControl}
             multiple
-          ></select>
+          >
+            {ingredients.map((ing) => (
+              <option key={ing.id} value={ing.id}>
+                {ing.name}
+              </option>
+            ))}
+          </select>
           <small>Hold Ctrl (or Cmd) to select multiple ingredients</small>
         </div>
 
