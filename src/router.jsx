@@ -4,6 +4,7 @@ import MainLayout from "./layouts/MainLayout";
 import Dashboard from "./pages/Dashboard";
 import AddCoffee from "./pages/AddCoffee";
 import AddIngredients from "./pages/AddIngredients";
+import EditCoffee from "./pages/EditCoffee";
 // Error Page
 import ErrorPage from "./pages/ErrorPage";
 
@@ -14,7 +15,13 @@ const router = [
     children: [
       {
         element: <Dashboard />,
-        index: true,
+        path: "/",
+        children: [
+          {
+            element: <EditCoffee />,
+            path: "/edit-coffee",
+          },
+        ],
       },
       {
         element: <AddCoffee />,
@@ -26,8 +33,6 @@ const router = [
       },
     ],
   },
-
-  // Dynamic Router
 
   // Error Handling Router
   {

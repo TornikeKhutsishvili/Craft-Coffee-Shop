@@ -1,7 +1,7 @@
 import styles from "../styles/form.module.css";
 import button from "../styles/button.module.css";
 
-const CoffeeForm = () => {
+const EditCoffeeForm = () => {
   const submitCoffeeForm = () => {};
 
   return (
@@ -10,7 +10,7 @@ const CoffeeForm = () => {
         id="coffee-form"
         onSubmit={(e) => {
           e.preventDefault();
-          submitCoffeeForm();
+          submitCoffeeForm(true);
         }}
       >
         <div className={styles.formRow}>
@@ -100,7 +100,7 @@ const CoffeeForm = () => {
             type="submit"
             className={`${button.btn} ${button.btnPrimary}`}
           >
-            Add Coffee
+            Update Coffee
           </button>
         </div>
       </form>
@@ -108,4 +108,4 @@ const CoffeeForm = () => {
   );
 };
 
-export default CoffeeForm;
+export default EditCoffeeForm;
