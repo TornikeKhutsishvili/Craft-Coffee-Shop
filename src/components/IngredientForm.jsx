@@ -1,10 +1,15 @@
+import { useEffect, useState } from "react";
 import { useAdminContext } from "../contexts/AdminContext";
 import styles from "../styles/form.module.css";
 import button from "../styles/button.module.css";
-import { useState } from "react";
 
 const IngredientForm = () => {
-  const { addIngredient } = useAdminContext;
+  const {
+    addIngredient,
+    updateIngredient,
+    editingIngredient,
+    setEditingIngredient,
+  } = useAdminContext();
 
   const [form, setForm] = useState({
     name: "",
@@ -14,11 +19,31 @@ const IngredientForm = () => {
     flavor: "",
   });
 
+  useEffect(() => {
+    if (editingIngredient) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setForm({
+        name: editingIngredient.name || "",
+        price: editingIngredient.price?.toString() || "",
+        description: editingIngredient.description || "",
+        strength: editingIngredient.strength || "Low",
+        flavor: editingIngredient.flavor || "",
+      });
+    }
+  }, [editingIngredient]);
+
   const submitIngredientForm = async () => {
-    await addIngredient({
+    const payload = {
       ...form,
       price: Number(form.price),
-    });
+    };
+
+    if (editingIngredient) {
+      await updateIngredient(editingIngredient.id, payload);
+      setEditingIngredient(null);
+    } else {
+      await addIngredient(payload);
+    }
 
     setForm({
       name: "",
@@ -120,7 +145,7 @@ const IngredientForm = () => {
         </div>
 
         <button type="submit" className={`${button.btn} ${button.btnPrimary}`}>
-          Add Ingredient
+          {editingIngredient ? "Update Ingredient" : "Add Ingredient"}
         </button>
       </form>
     </>

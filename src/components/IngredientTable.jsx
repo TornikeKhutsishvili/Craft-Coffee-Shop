@@ -1,8 +1,13 @@
 import { useAdminContext } from "../contexts/AdminContext";
+import button from "../styles/button.module.css";
 
 const IngredientTable = () => {
-  const { ingredients, deleteIngredients, ingredientsLoading } =
-    useAdminContext();
+  const {
+    ingredients,
+    setEditingIngredient,
+    deleteIngredient,
+    ingredientsLoading,
+  } = useAdminContext();
 
   if (ingredientsLoading) return <p>Loading . . .</p>;
 
@@ -20,15 +25,24 @@ const IngredientTable = () => {
           </tr>
         </thead>
         <tbody id="ingredient-table-body">
-          {ingredients.map((ingrItem) => (
-            <tr key={ingrItem.id}>
-              <td>{ingrItem.id}</td>
-              <td>{ingrItem.name}</td>
-              <td>$ {ingrItem.price}</td>
-              <td>{ingrItem.strength}</td>
-              <td>{ingrItem.flavor}</td>
+          {ingredients.map((ingredient) => (
+            <tr key={ingredient.id}>
+              <td>{ingredient.id}</td>
+              <td>{ingredient.name}</td>
+              <td>${ingredient.price}</td>
+              <td>{ingredient.strength}</td>
+              <td>{ingredient.flavor}</td>
               <td>
-                <button onClick={() => deleteIngredients(ingrItem.id)}>
+                <button
+                  className={`${button.btn} ${button.btnPrimary}`}
+                  onClick={() => setEditingIngredient(ingredient)}
+                >
+                  Edit
+                </button>
+                <button
+                  className={`${button.btn} ${button.btnDanger}`}
+                  onClick={() => deleteIngredient(ingredient.id)}
+                >
                   Delete
                 </button>
               </td>

@@ -12,6 +12,7 @@
   overflow: hidden;
   box-shadow: var(--shadow);
   margin-bottom: 30px;
+  padding: 15px;
 }
 
 .coffeeImage {

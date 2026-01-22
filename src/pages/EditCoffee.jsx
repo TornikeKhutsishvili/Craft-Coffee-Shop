@@ -1,4 +1,3 @@
-import Sidebar from "../components/Sidebar";
 import EditCoffeeHeader from "../components/EditCoffeeHeader";
 import EditCoffeeForm from "../components/EditCoffeeForm";
 import styles from "../styles/addCoffee.module.css";
@@ -8,9 +7,9 @@ const EditCoffee = () => {
     <>
       <div className={styles.mainContent}>
         <EditCoffeeHeader />
-      </div>
-      <div className={styles.formContainer}>
-        <EditCoffeeForm />
+        <div className={styles.formContainer}>
+          <EditCoffeeForm />
+        </div>
       </div>
     </>
   );

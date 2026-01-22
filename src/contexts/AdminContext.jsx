@@ -1,9 +1,15 @@
-import { createContext, useCallback, useContext, useMemo } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
 import useFetch from "../hooks/useFetch";
 import useRequest from "../hooks/useRequest";
 
 const AdminContext = createContext(null);
-const API_URL = "http://localhost:3003";
+const API_URL = "http://localhost:3004";
 
 const AdminProvider = ({ children }) => {
   const {
@@ -21,21 +27,73 @@ const AdminProvider = ({ children }) => {
   } = useFetch({ url: `${API_URL}/coffees` });
 
   const { sendRequest, loading: mutationLoading } = useRequest();
+  const [editingIngredient, setEditingIngredient] = useState(null);
 
+  // INGREDIENTS
   const addIngredient = useCallback(
     async (data) => {
-      await sendRequest(data, `${API_URL}/ingredients`, "POST");
+      const nextId =
+        ingredients && ingredients.length > 0
+          ? Math.max(...ingredients.map((i) => Number(i.id))) + 1
+          : 1;
+      const newIngredient = { ...data, id: nextId };
+      await sendRequest(newIngredient, `${API_URL}/ingredients`, "POST");
+      refetchIngredients();
+    },
+    [sendRequest, refetchIngredients, ingredients],
+  );
+
+  const deleteIngredient = useCallback(
+    async (id) => {
+      await sendRequest(null, `${API_URL}/ingredients/${Number(id)}`, "DELETE");
       refetchIngredients();
     },
     [sendRequest, refetchIngredients],
   );
 
-  const deleteIngredient = useCallback(
-    async (id) => {
-      await sendRequest(null, `${API_URL}/ingredients/${id}`, "DELETE");
+  const updateIngredient = useCallback(
+    async (id, data) => {
+      await sendRequest(data, `${API_URL}/ingredients/${Number(id)}`, "PUT");
       refetchIngredients();
     },
     [sendRequest, refetchIngredients],
+  );
+
+  // COFFEES
+  const addCoffee = useCallback(
+    async (data) => {
+      const nextId =
+        coffees && coffees.length > 0
+          ? Math.max(...coffees.map((c) => Number(c.id))) + 1
+          : 1;
+
+      const newCoffee = { ...data, id: nextId };
+
+      await sendRequest(newCoffee, `${API_URL}/coffees`, "POST");
+      refetchCoffees();
+    },
+    [sendRequest, refetchCoffees, coffees],
+  );
+
+  const updateCoffee = useCallback(
+    async (id, data) => {
+      await sendRequest(data, `${API_URL}/coffees/${Number(id)}`, "PUT");
+      refetchCoffees();
+    },
+    [sendRequest, refetchCoffees],
+  );
+
+  const deleteCoffee = useCallback(
+    async (id) => {
+      await sendRequest(null, `${API_URL}/coffees/${Number(id)}`, "DELETE");
+      refetchCoffees();
+    },
+    [sendRequest, refetchCoffees],
+  );
+
+  const getCoffeeById = useCallback(
+    (id) => coffees?.find((c) => Number(c.id) === Number(id)),
+    [coffees],
   );
 
   const contextValue = useMemo(
@@ -47,11 +105,18 @@ const AdminProvider = ({ children }) => {
       coffeesLoading,
       ingredientsError,
       coffeesError,
-      refetchCoffees,
       mutationLoading,
 
       addIngredient,
       deleteIngredient,
+      updateIngredient,
+      editingIngredient,
+      setEditingIngredient,
+
+      addCoffee,
+      updateCoffee,
+      deleteCoffee,
+      getCoffeeById,
     }),
     [
       ingredients,
@@ -60,10 +125,18 @@ const AdminProvider = ({ children }) => {
       coffeesLoading,
       ingredientsError,
       coffeesError,
-      refetchCoffees,
       mutationLoading,
+
       addIngredient,
       deleteIngredient,
+      editingIngredient,
+      setEditingIngredient,
+      updateIngredient,
+
+      addCoffee,
+      updateCoffee,
+      deleteCoffee,
+      getCoffeeById,
     ],
   );
 
@@ -75,9 +148,11 @@ const AdminProvider = ({ children }) => {
 };
 
 export const useAdminContext = () => {
-  const AdminContextValue = useContext(AdminContext);
-  if (!AdminContextValue) throw new Error("Component not inside AdminProvider");
-  return AdminContextValue;
+  const contextValues = useContext(AdminContext);
+  if (!contextValues) {
+    throw new Error("Component not inside AdminProvider");
+  }
+  return contextValues;
 };
 
 export default AdminProvider;

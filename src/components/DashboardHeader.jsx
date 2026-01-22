@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import button from "../styles/button.module.css";
 
-const Header = () => {
+const DashboardHeader = () => {
   const navigate = useNavigate();
 
   return (
@@ -19,4 +19,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default DashboardHeader;
