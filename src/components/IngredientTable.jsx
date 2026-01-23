@@ -29,7 +29,7 @@ const IngredientTable = () => {
             <tr key={ingredient.id}>
               <td>{ingredient.id}</td>
               <td>{ingredient.name}</td>
-              <td>${ingredient.price}</td>
+              <td>₾{ingredient.price}</td>
               <td>{ingredient.strength}</td>
               <td>{ingredient.flavor}</td>
               <td>

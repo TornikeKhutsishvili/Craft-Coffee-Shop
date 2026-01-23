@@ -39,7 +39,7 @@ const Dashboard = () => {
                     {coffee.caffeine}mg
                   </p>
                   <p>
-                    <strong>Price: </strong>${coffee.price}
+                    <strong>Price: </strong>₾{coffee.price}
                   </p>
                 </div>
                 <div className={cardStyle.cardFooter}>
