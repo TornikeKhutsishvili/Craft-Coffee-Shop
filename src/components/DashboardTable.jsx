@@ -28,7 +28,7 @@ const DashboardTable = () => {
               <td>{coffee.title}</td>
               <td>{coffee.country}</td>
               <td>{coffee.caffeine}mg</td>
-              <td>${coffee.price}</td>
+              <td>₾{coffee.price}</td>
               <td>
                 <button
                   className={`${button.btn} ${button.btnSecondary}`}

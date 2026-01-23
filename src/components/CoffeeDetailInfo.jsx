@@ -25,7 +25,7 @@ const CoffeeDetailInfo = ({ coffee, onEdit, onDelete }) => {
           </span>
 
           <span className={styles.metaItem}>
-            Price: $<span>{coffee.price}</span>
+            Price: ₾<span>{coffee.price}</span>
           </span>
         </div>
 
