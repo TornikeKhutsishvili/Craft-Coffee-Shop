@@ -34,8 +34,8 @@ const AdminProvider = ({ children }) => {
     async (data) => {
       const nextId =
         ingredients && ingredients.length > 0
-          ? Math.max(...ingredients.map((i) => Number(i.id))) + 1
-          : 1;
+          ? Math.max(...ingredients.map((i) => String(i.id))) + "1"
+          : "1";
       const newIngredient = { ...data, id: nextId };
       await sendRequest(newIngredient, `${API_URL}/ingredients`, "POST");
       refetchIngredients();
@@ -45,7 +45,7 @@ const AdminProvider = ({ children }) => {
 
   const deleteIngredient = useCallback(
     async (id) => {
-      await sendRequest(null, `${API_URL}/ingredients/${Number(id)}`, "DELETE");
+      await sendRequest(null, `${API_URL}/ingredients/${String(id)}`, "DELETE");
       refetchIngredients();
     },
     [sendRequest, refetchIngredients],
@@ -53,7 +53,7 @@ const AdminProvider = ({ children }) => {
 
   const updateIngredient = useCallback(
     async (id, data) => {
-      await sendRequest(data, `${API_URL}/ingredients/${Number(id)}`, "PUT");
+      await sendRequest(data, `${API_URL}/ingredients/${String(id)}`, "PUT");
       refetchIngredients();
     },
     [sendRequest, refetchIngredients],
@@ -64,8 +64,8 @@ const AdminProvider = ({ children }) => {
     async (data) => {
       const nextId =
         coffees && coffees.length > 0
-          ? Math.max(...coffees.map((c) => Number(c.id))) + 1
-          : 1;
+          ? Math.max(...coffees.map((c) => String(c.id))) + "1"
+          : "1";
 
       const newCoffee = { ...data, id: nextId };
 
@@ -77,7 +77,7 @@ const AdminProvider = ({ children }) => {
 
   const updateCoffee = useCallback(
     async (id, data) => {
-      await sendRequest(data, `${API_URL}/coffees/${Number(id)}`, "PUT");
+      await sendRequest(data, `${API_URL}/coffees/${String(id)}`, "PUT");
       refetchCoffees();
     },
     [sendRequest, refetchCoffees],
@@ -85,14 +85,14 @@ const AdminProvider = ({ children }) => {
 
   const deleteCoffee = useCallback(
     async (id) => {
-      await sendRequest(null, `${API_URL}/coffees/${Number(id)}`, "DELETE");
+      await sendRequest(null, `${API_URL}/coffees/${String(id)}`, "DELETE");
       refetchCoffees();
     },
     [sendRequest, refetchCoffees],
   );
 
   const getCoffeeById = useCallback(
-    (id) => coffees?.find((c) => Number(c.id) === Number(id)),
+    (id) => coffees?.find((c) => String(c.id) === String(id)),
     [coffees],
   );
 

@@ -17,12 +17,12 @@
       "flavor": "Earthy"
     },
     {
-      "id": "3",
       "name": "Vanilla Syrup",
       "price": 8.99,
       "description": "Low Vanilla Syrup",
       "strength": "Low",
-      "flavor": "Sweet"
+      "flavor": "Sweet",
+      "id": "3"
     }
   ],
   "coffees": [

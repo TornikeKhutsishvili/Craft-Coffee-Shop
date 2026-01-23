@@ -22,7 +22,7 @@ const CoffeeForm = () => {
     const { id, value, selectedOptions } = e.target;
 
     if (id === "ingredients") {
-      const values = Array.from(selectedOptions).map((o) => Number(o.value));
+      const values = Array.from(selectedOptions).map((o) => String(o.value));
       setForm((prev) => ({ ...prev, ingredients: values }));
       return;
     }

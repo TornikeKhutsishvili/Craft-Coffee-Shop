@@ -20,7 +20,7 @@ const EditCoffeeForm = () => {
     if (multiple) {
       const selected = Array.from(options)
         .filter((o) => o.selected)
-        .map((o) => Number(o.value));
+        .map((o) => String(o.value));
 
       setForm((prev) => ({ ...prev, [id]: selected }));
     } else {
