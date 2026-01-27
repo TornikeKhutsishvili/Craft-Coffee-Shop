@@ -39,16 +39,77 @@
       "description": "GINGERBREAD",
       "strength": "High",
       "flavor": "GINGERBREAD"
+    },
+    {
+      "id": "3111",
+      "name": "Caramel Syrup",
+      "price": 9.49,
+      "description": "Rich caramel flavored syrup",
+      "strength": "Low",
+      "flavor": "Caramel"
+    },
+    {
+      "id": "31111",
+      "name": "Hazelnut Syrup",
+      "price": 9.29,
+      "description": "Nutty hazelnut flavored syrup",
+      "strength": "Low",
+      "flavor": "Hazelnut"
+    },
+    {
+      "id": "311111",
+      "name": "Whipped Cream",
+      "price": 3.99,
+      "description": "Light and fluffy whipped cream topping",
+      "strength": "Medium",
+      "flavor": "Creamy"
+    },
+    {
+      "id": "4",
+      "name": "Chocolate Syrup",
+      "price": 8.75,
+      "description": "Sweet chocolate flavored syrup",
+      "strength": "Low",
+      "flavor": "Chocolate"
+    },
+    {
+      "id": "5",
+      "name": "Cinnamon",
+      "price": 1.99,
+      "description": "Warm aromatic cinnamon spice",
+      "strength": "Low",
+      "flavor": "Spicy"
+    },
+    {
+      "id": "6",
+      "name": "Honey",
+      "price": 4.49,
+      "description": "Natural honey sweetener",
+      "strength": "High",
+      "flavor": "Honey"
+    },
+    {
+      "id": "7",
+      "name": "Almond Milk",
+      "price": 2.99,
+      "description": "Dairy-free almond milk",
+      "strength": "Low",
+      "flavor": "Nutty"
+    },
+    {
+      "id": "3111111",
+      "name": "Oat Milk",
+      "price": 3.19,
+      "description": "Creamy dairy-free oat milk",
+      "strength": "Medium",
+      "flavor": "Oaty"
     }
   ],
   "coffees": [
     {
       "id": "1",
       "title": "Ethiopian Yirgacheffe",
-      "ingredients": [
-        "1",
-        "2"
-      ],
+      "ingredients": ["1", "2"],
       "description": "A light roasted coffee with bright acidity, and complex fruit and floral notes....",
       "image": "https://www.sheldrakecoffeeroasting.com/cdn/shop/products/3.png?v=1642990528",
       "country": "Ethiopia",
@@ -58,10 +119,7 @@
     {
       "id": "2",
       "title": "Colombian Supremo",
-      "ingredients": [
-        "1",
-        "3"
-      ],
+      "ingredients": ["1", "3"],
       "description": "Medium roast with a sweet and rich caramel flavor, balanced acidity and a clean finish....",
       "image": "https://cdn11.bigcommerce.com/s-offs222q2k/images/stencil/960w/products/3895/4752/CS_WB__84233.1671026722.jpg?c=1",
       "country": "Colombia",
@@ -82,9 +140,7 @@
     {
       "id": "211",
       "title": "Cappuccino",
-      "ingredients": [
-        "31"
-      ],
+      "ingredients": ["31"],
       "description": "Cappuccino is an Italian coffee drink prepared with equal parts espresso, steamed milk, and milk foam. The perfect cappuccino has a rich, complex flavor from the espresso, while the milk adds a creamy texture and slight sweetness. The foam top adds a light, airy finish to every sip.",
       "image": "https://recettes.vedrenne.fr/1269-large_default/gingerbread-cappuccino.jpg",
       "country": "Italy",
