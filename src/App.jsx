@@ -1,13 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./App.css";
 import router from "./router";
+import AdminProvider from "./contexts/AdminContext";
+
+const appRouter = createBrowserRouter(router);
 
 function App() {
   return (
     <>
-      <div className="app">
-        <RouterProvider router={createBrowserRouter(router)} />
-      </div>
+      <AdminProvider>
+        <div className="app">
+          <RouterProvider router={appRouter} />
+        </div>
+      </AdminProvider>
     </>
   );
 }

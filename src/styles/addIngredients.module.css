@@ -1,0 +1,35 @@
+.mainContent {
+  flex: 1;
+  margin-left: 250px;
+  padding: 20px;
+  transition: all 0.3s;
+}
+
+.formContainer {
+  background-color: white;
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tableContainer {
+  overflow-x: auto;
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
+  background-color: white;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 992px) {
+  .mainContent {
+    margin-left: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    margin-left: 0;
+  }
+}
